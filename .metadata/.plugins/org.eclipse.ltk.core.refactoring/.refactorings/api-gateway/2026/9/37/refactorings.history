@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename package &apos;com.staynest.api_gateway&apos; to &apos;com.staynest.gateway&apos;&#x0A;- Original project: &apos;api-gateway&apos;&#x0A;- Original element: &apos;api-gateway/src/main/java/com.staynest.api_gateway&apos;&#x0A;- Renamed element: &apos;api-gateway/src/main/java/com.staynest.gateway&apos;&#x0A;- Update references to refactored element&#x0A;- Update textual occurrences in comments and strings" description="Rename package &apos;com.staynest.api_gateway&apos;" flags="589830" hierarchical="false" id="org.eclipse.jdt.ui.rename.package" input="/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.staynest.api_gateway" name="com.staynest.gateway" qualified="false" references="true" stamp="1789145410207" textual="false" version="1.0"/>
+</session>

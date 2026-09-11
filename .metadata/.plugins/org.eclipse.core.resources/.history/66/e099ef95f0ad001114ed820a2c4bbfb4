@@ -1,0 +1,80 @@
+# ===================================================================
+# PRODUCTION PROFILE - PostgreSQL Configuration
+# ===================================================================
+
+# Server Configuration
+server.port=8080
+server.servlet.context-path=/auth
+server.compression.enabled=true
+server.compression.min-response-size=1024
+
+# DataSource Configuration - PostgreSQL
+spring.datasource.url=jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:staynest_auth}
+spring.datasource.username=${DB_USERNAME:postgres}
+spring.datasource.password=${DB_PASSWORD}
+spring.datasource.driver-class-name=org.postgresql.Driver
+
+# Connection Pool Configuration (HikariCP)
+spring.datasource.hikari.maximum-pool-size=20
+spring.datasource.hikari.minimum-idle=5
+spring.datasource.hikari.connection-timeout=30000
+spring.datasource.hikari.idle-timeout=600000
+spring.datasource.hikari.max-lifetime=1800000
+spring.datasource.hikari.auto-commit=true
+spring.datasource.hikari.leak-detection-threshold=60000
+
+# JPA/Hibernate Configuration
+spring.jpa.database-platform=org.hibernate.dialect.PostgreSQLDialect
+spring.jpa.hibernate.ddl-auto=validate
+spring.jpa.show-sql=false
+spring.jpa.properties.hibernate.generate_statistics=false
+spring.jpa.properties.hibernate.use_sql_comments=false
+spring.jpa.properties.hibernate.format_sql=false
+spring.jpa.properties.hibernate.jdbc.batch_size=20
+spring.jpa.properties.hibernate.order_inserts=true
+spring.jpa.properties.hibernate.order_updates=true
+spring.jpa.properties.hibernate.jdbc.fetch_size=50
+
+# PostgreSQL Specific Properties
+spring.datasource.hikari.data-source-properties.reWriteBatchedInserts=true
+spring.datasource.hikari.data-source-properties.stringtype=unspecified
+
+# Application Configuration
+spring.application.name=auth-service
+
+# Logging Configuration
+logging.level.root=INFO
+logging.level.com.staynest=INFO
+logging.level.org.springframework.security=WARN
+logging.level.org.hibernate=WARN
+logging.level.org.springframework.web=WARN
+logging.pattern.console=%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
+logging.pattern.file=%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
+logging.file.name=logs/auth-service.log
+logging.file.max-size=10MB
+logging.file.max-history=10
+
+# Actuator Configuration
+management.endpoints.web.exposure.include=health,info,metrics
+management.endpoint.health.show-details=when-authorized
+management.metrics.export.simple.enabled=true
+
+# Eureka Client Configuration
+eureka.client.register-with-eureka=true
+eureka.client.fetch-registry=true
+eureka.client.service-url.defaultZone=${EUREKA_SERVER_URL:http://localhost:8761/eureka/}
+eureka.instance.hostname=${HOSTNAME:localhost}
+eureka.instance.prefer-ip-address=true
+
+# Security Configuration
+spring.security.user.name=${SECURITY_USER_NAME:admin}
+spring.security.user.password=${SECURITY_PASSWORD}
+spring.security.user.roles=ADMIN
+
+# Jackson Configuration
+spring.jackson.default-property-inclusion=non_null
+spring.jackson.serialization.write-dates-as-timestamps=false
+spring.jackson.time-zone=UTC
+
+# Banner
+spring.banner.location=classpath:banner.txt
